@@ -19,8 +19,8 @@ function getMaxJoltage(battery, batteryLimit) {
   let currBattery = 0;
   let firstIdx = 0;
   
-  while(currBattery < batteryLimit) {
-    for ( let i = firstIdx; i < arr.length - (batteryLimit - (currBattery + 1)); i++ ) {
+  while (currBattery < batteryLimit) {
+    for (let i = firstIdx; i < arr.length - (batteryLimit - (currBattery + 1)); i++) {
       const num = +arr[i];
       if (num > batteries[currBattery]) {
         batteries[currBattery] = num;
