@@ -2,7 +2,7 @@ async function solution(input) {
   let joltage = 0;
   let unsafeJoltage = 0;
 
-  for ( line of input ) {
+  for (line of input) {
     joltage += getMaxJoltage(line, 2);
     unsafeJoltage += getMaxJoltage(line, 12);
   }
