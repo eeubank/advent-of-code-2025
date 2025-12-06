@@ -13,7 +13,7 @@ async function solution(input) {
 
 function readLine(line) {
   const matches = [];
-  const isOperators = ["+", "*"].includes(line[0]);
+  const isOperators = ['+', '*'].includes(line[0]);
   const r = isOperators ? /(\+|\*)/g : /(\d+)/g;
   let m;
   while ((m = r.exec(line)) != null) {
@@ -46,9 +46,9 @@ function calculateAnswers(worksheet) {
   for (const problem of worksheet) {
     const answer = problem.reduce((numbers, numOrOp) => {
       switch (numOrOp) {
-        case "+":
+        case '+':
           return numbers.reduce((answer, num) => answer + num, 0);
-        case "*":
+        case '*':
           return numbers.reduce((answer, num) => answer * num, 1);
         default:
           numbers.push(numOrOp);
@@ -64,13 +64,13 @@ function calculateAnswers(worksheet) {
 
 function readWorksheetCorrectly(input) {
   const lineLen = input[0].length;
-  const split = input.map((line) => line.split(""));
-  const worksheet = new Array(input[0].length).fill("");
+  const split = input.map((line) => line.split(''));
+  const worksheet = new Array(input[0].length).fill('');
 
   for (let i = lineLen - 1; i >= 0; i--) {
     for (let j = 0; j < input.length; j++) {
       const char = split[j][i];
-      if (char !== " ") {
+      if (char !== ' ') {
         worksheet[lineLen - i - 1] += char;
       }
     }
@@ -84,21 +84,21 @@ function calculateAnswersCorrectly(worksheet) {
   let currOp;
 
   for (let i = worksheet.length - 1; i >= 0; i--) {
-    if (worksheet[i] === "") {
+    if (worksheet[i] === '') {
       continue;
     }
 
     const lastChar = worksheet[i].at(-1);
-    if (["+", "*"].includes(lastChar)) {
+    if (['+', '*'].includes(lastChar)) {
       currOp = lastChar;
-      answers.unshift(currOp === "*" ? 1 : 0);
+      answers.unshift(currOp === '*' ? 1 : 0);
     }
 
     switch (currOp) {
-      case "+":
+      case '+':
         answers[0] += parseInt(worksheet[i]);
         break;
-      case "*":
+      case '*':
         answers[0] *= parseInt(worksheet[i]);
         break;
     }
