@@ -91,14 +91,12 @@ function getLargestCircuits(numExtensionCords, totalJunctions, distances) {
       // add j2 to circuit
       const j1 = map.get(d.j1.id);
       map.set(d.j2.id, { circuit: j1.circuit });
-      j1.open = false;
       circuits[j1.circuit].push(d.j2.id);
       remainingJunctions--;
     } else if (hasJ2) {
       // add j1 to circuit
       const j2 = map.get(d.j2.id);
       map.set(d.j1.id, { circuit: j2.circuit });
-      j2.open = false;
       circuits[j2.circuit].push(d.j1.id);
       remainingJunctions--;
     }
